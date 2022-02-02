@@ -1,0 +1,11 @@
+{
+  "path": "@endemolshinegroup/cz-jira-smart-commit",
+  "@endemolshinegroup/cz-jira-smart-commit": {
+    "scopes": {
+      "search-front": "For frontend app commits",
+      "search-api": "For API commits",
+      "core": "For Core bushiness logic commits",
+      "repo": "For commits related to the whole project"
+    }
+  }
+}
