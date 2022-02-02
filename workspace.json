@@ -1,6 +1,7 @@
 {
   "version": 2,
   "projects": {
+    "core": "libs/core",
     "search-frontend": "apps/search-frontend",
     "search-frontend-e2e": "apps/search-frontend-e2e"
   }
