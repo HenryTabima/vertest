@@ -188,8 +188,8 @@ export class InMemoryPageRepository implements IPageRepository {
     const result = IN_MEMORY_DATA.filter((item) =>
       item.title.toLowerCase().match(titleRegex)
     ).map((item) => new Page(item));
-    return result;
+    return Promise.resolve(result);
   }
 }
 
-export const inMemoryRepository = new InMemoryPageRepository();
+export const inMemoryPageRepository = new InMemoryPageRepository();
