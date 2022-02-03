@@ -192,4 +192,4 @@ export class InMemoryPageRepository implements IPageRepository {
   }
 }
 
-export default new InMemoryPageRepository();
+export const inMemoryRepository = new InMemoryPageRepository();
