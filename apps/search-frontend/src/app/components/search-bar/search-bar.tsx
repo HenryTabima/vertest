@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 /* eslint-disable-next-line */
 export interface SearchBarProps {
+  inputValue: string;
   onInputChange: (value: string) => void;
   onSearchClick: (value: any) => void;
 }
@@ -20,11 +21,11 @@ const StyledSearchBar = styled.div`
   }
 `;
 
-export function SearchBar({ onSearchClick, onInputChange }: SearchBarProps) {
+export function SearchBar({ inputValue, onSearchClick, onInputChange }: SearchBarProps) {
   return (
     <StyledSearchBar>
       <div className="input-container">
-        <Input placeholder="Search by title" onChange={onInputChange} />
+        <Input placeholder="Search by title" onChange={onInputChange} value={inputValue} />
       </div>
       <div className="button-container">
         <Button appearance="primary" block onClick={onSearchClick}>

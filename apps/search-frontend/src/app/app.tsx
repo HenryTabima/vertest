@@ -4,8 +4,8 @@ import SearchHome from './pages/search-home/search-home';
 import SearchResult from './pages/search-result/search-result';
 
 const StyledApp = styled.div`
+  box-sizing: border-box;
   min-height: 100vh;
-  width: 100vw;
   display: flex;
   justify-content: center;
   align-items: center;

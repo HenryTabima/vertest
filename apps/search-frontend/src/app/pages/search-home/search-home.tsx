@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { Container } from 'rsuite';
 import styled from 'styled-components';
 import SearchBar from '../../components/search-bar/search-bar';
+import { useSearchMachine } from '../../modules/search/search-service';
 
 /* eslint-disable-next-line */
 export interface SearchHomeProps {}
@@ -13,23 +14,22 @@ const StyledSearchHome = styled.div`
 `;
 
 export function SearchHome(props: SearchHomeProps) {
+  const [state, send] = useSearchMachine();
   const navigate = useNavigate();
-  const [input, setInput] = useState('');
 
-  const handleInputChange = useCallback((value) => setInput(value), []);
-  const handleSearchClick = useCallback(
-    (value) => {
-      if (input !== '') {
-        navigate(input);
-      }
-    },
-    [input]
-  );
+  const handleInputChange = useCallback((value) => send('UPDATE_QUERY', { query: value }), []);
+  const handleSearchClick = useCallback(() => {
+    const { query } = state.context;
+    if (query !== '') {
+      send('FETCH');
+      navigate(query);
+    }
+  }, [state.context.query]);
 
   return (
     <StyledSearchHome>
       <Container>
-        <SearchBar onInputChange={handleInputChange} onSearchClick={handleSearchClick} />
+        <SearchBar inputValue={state.context.query} onInputChange={handleInputChange} onSearchClick={handleSearchClick} />
       </Container>
     </StyledSearchHome>
   );
